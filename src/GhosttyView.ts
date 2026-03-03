@@ -83,6 +83,14 @@ export class GhosttyView extends ItemView {
 		return GHOSTTY_THEMES[this.settings.theme] ?? GHOSTTY_THEMES["ghostty-dark"];
 	}
 
+	private getVaultBasePath(): string {
+		const adapter = this.app.vault.adapter;
+		if ("getBasePath" in adapter && typeof adapter.getBasePath === "function") {
+			return adapter.getBasePath();
+		}
+		return process.env.HOME ?? "/";
+	}
+
 	private getShellPath(): string {
 		if (this.settings.shellPath) {
 			return this.settings.shellPath;
@@ -111,9 +119,7 @@ export class GhosttyView extends ItemView {
 			const cols = this.terminal?.cols ?? 80;
 			const rows = this.terminal?.rows ?? 24;
 
-			// Use the vault path as the working directory
-			const vaultPath =
-				(this.app.vault.adapter as { getBasePath?: () => string }).getBasePath?.() ?? process.env.HOME ?? "/";
+			const vaultPath = this.getVaultBasePath();
 
 			this.ptyProcess = pty.spawn(shell, args, {
 				name: "xterm-256color",
@@ -160,7 +166,8 @@ export class GhosttyView extends ItemView {
 					this.ptyProcess.resize(this.terminal.cols, this.terminal.rows);
 				}
 			} catch {
-				// Ignore fit errors during initialization
+				// Fit errors are expected during initialization when the terminal
+				// element has not yet been fully rendered in the DOM
 			}
 		}
 	}
