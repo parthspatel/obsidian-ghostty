@@ -1,0 +1,121 @@
+/* ============================================
+   Ghostty Terminal for Obsidian
+   ============================================ */
+
+/* Main container */
+.ghostty-terminal-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--background-primary);
+}
+
+/* Toolbar */
+.ghostty-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+  flex-shrink: 0;
+  min-height: 32px;
+}
+
+.ghostty-toolbar-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ghostty-toolbar-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.ghostty-toolbar-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ghostty-toolbar-btn:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* Terminal xterm.js container */
+.ghostty-xterm-container {
+  flex: 1;
+  overflow: hidden;
+  padding: 4px;
+  position: relative;
+}
+
+/* xterm.js overrides for Obsidian integration */
+.ghostty-xterm-container .xterm {
+  height: 100%;
+  padding: 4px;
+}
+
+.ghostty-xterm-container .xterm-viewport {
+  overflow-y: auto;
+}
+
+.ghostty-xterm-container .xterm-viewport::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ghostty-xterm-container .xterm-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ghostty-xterm-container .xterm-viewport::-webkit-scrollbar-thumb {
+  background: var(--background-modifier-border);
+  border-radius: 4px;
+}
+
+.ghostty-xterm-container .xterm-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Selection styling */
+.ghostty-xterm-container .xterm-selection div {
+  opacity: 0.3;
+}
+
+/* Cursor animation */
+.ghostty-xterm-container .xterm-cursor-layer {
+  z-index: 4;
+}
+
+/* Link hover */
+.ghostty-xterm-container .xterm-link-layer a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Focus indicator */
+.ghostty-xterm-container:focus-within {
+  outline: none;
+}
+
+.ghostty-xterm-container:focus-within::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--interactive-accent);
+  opacity: 0.6;
+}

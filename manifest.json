@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-ghostty",
+  "name": "Ghostty Terminal",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Embed a Ghostty-themed terminal in Obsidian's side panel. Adaptable for Claude Code integration.",
+  "author": "obsidian-ghostty",
+  "isDesktopOnly": true
+}
