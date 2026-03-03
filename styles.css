@@ -1,0 +1,44 @@
+.ghostty-terminal-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+}
+
+.ghostty-terminal {
+	flex: 1;
+	overflow: hidden;
+	padding: 4px;
+}
+
+.ghostty-terminal .xterm {
+	height: 100%;
+}
+
+.ghostty-terminal .xterm-viewport {
+	overflow-y: auto;
+}
+
+/* Ensure the terminal cursor is visible */
+.ghostty-terminal .xterm-cursor-layer {
+	z-index: 1;
+}
+
+/* Scrollbar styling to match Obsidian */
+.ghostty-terminal .xterm-viewport::-webkit-scrollbar {
+	width: 8px;
+}
+
+.ghostty-terminal .xterm-viewport::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.ghostty-terminal .xterm-viewport::-webkit-scrollbar-thumb {
+	background: var(--background-modifier-border);
+	border-radius: 4px;
+}
+
+.ghostty-terminal .xterm-viewport::-webkit-scrollbar-thumb:hover {
+	background: var(--background-modifier-border-hover);
+}

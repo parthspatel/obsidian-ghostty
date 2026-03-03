@@ -1,0 +1,9 @@
+{
+	"id": "obsidian-ghostty",
+	"name": "Ghostty Terminal",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Integrates a Ghostty-inspired terminal into the Obsidian side panel. Spawn shells, run commands, and use CLI tools like Claude Code directly within Obsidian.",
+	"author": "Parth Patel",
+	"isDesktopOnly": true
+}
